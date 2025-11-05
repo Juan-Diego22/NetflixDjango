@@ -1,0 +1,515 @@
+body {
+    background-color: #141414;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.main-content {
+    padding: 120px 4% 50px 4%; 
+    color: white;
+    max-width: 1920px;
+    margin: 0 auto; 
+}
+
+.main-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: white;
+}
+
+/* Botón de Acción Principal (Crear Nueva Lista) */
+.btn-primary-list {
+    background-color: #e50914; 
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.btn-primary-list:hover {
+    background-color: #f40a1b;
+    transform: translateY(-1px);
+}
+
+/* Mensajes de Estado */
+.loading-msg, .error-msg, .empty-msg, .initial-msg {
+    color: #aaa;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Contenedor de las Listas (Grid) */
+.lists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 30px;
+}
+
+/* Tarjeta de Lista (Estructura de Portada) */
+.list-card {
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 200px; 
+    cursor: pointer;
+}
+
+.list-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Imagen de Portada (Fondo) */
+.list-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: brightness(50%); 
+    transition: filter 0.2s;
+}
+
+.list-card:hover .list-cover {
+    filter: brightness(70%);
+}
+
+.list-content {
+    position: relative;
+    z-index: 10;
+    padding: 15px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); 
+}
+
+.list-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.list-last-movie {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    margin-bottom: 10px;
+}
+
+.list-count {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #e50914;
+    margin-bottom: 15px;
+}
+
+/* Acciones (Botones de Editar/Eliminar) */
+.list-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0; 
+    transition: opacity 0.2s;
+    z-index: 11;
+}
+
+.list-card:hover .list-actions {
+    opacity: 1; 
+}
+
+.action-btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: rgba(229, 9, 20, 0.8); 
+}
+
+/* Sección de Búsqueda de Películas */
+.search-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: white;
+    font-size: 1rem;
+}
+
+.search-btn, .hide-search-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-btn {
+    background-color: #3c93d5; 
+    color: white;
+}
+.search-btn:hover { background-color: #2b7bc4; }
+
+.hide-search-btn {
+    background-color: #444;
+    color: white;
+}
+.hide-search-btn:hover { background-color: #555; }
+
+
+/* Contenedor de Resultados (Grid) */
+.search-results-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding-top: 10px;
+}
+
+.movie-result-card {
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.movie-result-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-result-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-result-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.movie-result-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.add-movie-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 3rem;
+    pointer-events: none; 
+}
+
+.movie-result-card:hover .add-movie-overlay {
+    opacity: 1;
+}
+
+/* Estilos del Modal (Base) */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-content {
+    background-color: #1f1f1f;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #e50914;
+    text-decoration: none;
+}
+
+.modal-list-options {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+.modal-list-options label {
+    background-color: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.modal-list-options label:hover {
+    background-color: #333;
+}
+
+.modal-list-options input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #e50914;
+}
+
+.btn-confirm {
+    background-color: #e50914;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.btn-confirm:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+}
+
+.btn-confirm:hover:not(:disabled) {
+    background-color: #f40a1b;
+}
+
+/* Estilos del Modal de Edición */
+.modal-content-edit {
+    width: 90%;
+    max-width: 800px; 
+    background-color: #181818;
+    padding: 0; 
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden; 
+}
+
+.edit-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 2.5rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    z-index: 1010;
+    float: none; 
+}
+.edit-modal-close:hover {
+    opacity: 1;
+}
+
+.edit-modal-header {
+    background-color: #222;
+    padding: 20px 30px;
+    border-bottom: 1px solid #333;
+}
+
+.edit-modal-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.list-name-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#save-list-name-btn {
+    width: auto; 
+    padding: 8px 20px;
+    margin-top: 0;
+    float: right; 
+}
+
+.edit-modal-body {
+    padding: 30px;
+    padding-top: 20px;
+    clear: both; 
+}
+
+.edit-modal-body h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #e50914;
+}
+
+.edit-movie-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); 
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px; 
+}
+
+.edit-movie-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.edit-movie-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.remove-movie-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(229, 9, 20, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.remove-movie-btn:hover {
+    background-color: #f40a1b;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .lists-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .search-input-group {
+        flex-wrap: wrap;
+    }
+    
+    .search-btn, .hide-search-btn {
+        width: 100%;
+    }
+    
+    .search-input {
+        flex-basis: 100%;
+    }
+
+    .search-icon-desktop {
+        display: none !important;
+    }
+    
+    .search-icon-mobile {
+        display: block !important;
+    }
+
+    /* Ajuste para el modal de edición en móviles */
+    .modal-content-edit {
+        max-width: 95%;
+    }
+    .edit-movie-list-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    .edit-movie-card img {
+        height: 150px;
+    }
+}

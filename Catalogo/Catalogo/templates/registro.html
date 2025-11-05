@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="../static/css/registro.css">
+</head>
+<body>
+    <div class="contenedor">
+        <form action="#">
+            <!-- Animación de palanca y linterna -->
+            <input type="checkbox" class="input-check" id="input-check">
+            <label for="input-check" class="palanca">
+                <span class="texto off">Off</span>
+                <span class="texto on">On</span>
+            </label>
+            <div class="linterna"></div>
+
+            <h2>Registrarse</h2>
+
+            <!-- Campo Nombre -->
+            <div class="input-box">
+                <span class="icono">
+                    <ion-icon name="person"></ion-icon>
+                </span>
+                <input type="text" required="required">
+                <label>Nombre completo</label>
+                <div class="input-linea"></div>
+            </div>
+
+            <!-- Campo Email -->
+            <div class="input-box">
+                <span class="icono">
+                    <ion-icon name="mail"></ion-icon>
+                </span>
+                <input type="email" required="required">
+                <label>Email</label>
+                <div class="input-linea"></div>
+            </div>
+
+            <!-- Campo Contraseña -->
+            <div class="input-box">
+                <span class="icono">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" required="required">
+                <label>Contraseña</label>
+                <div class="input-linea"></div>
+            </div>
+
+            <!-- Campo Confirmar Contraseña -->
+            <div class="input-box">
+                <span class="icono">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" required="required">
+                <label>Confirmar contraseña</label>
+                <div class="input-linea"></div>
+            </div>
+
+            <!-- Botón -->
+            <button type="submit">Registrarse</button>
+
+            <!-- Enlace para volver al login -->
+            <div class="enlace-registro">
+                <p>¿Ya tienes una cuenta? <a href="/login/">Inicia sesión</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Iconos -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+/* MAIN -> Banner principal */
+.hero-banner {
+    width: 100%;
+    height: 100vh; 
+    position: relative;
+    padding-top: 80px; 
+    background-size: cover;
+    background-position: center top;
+    color: white; 
+    display: flex;
+    align-items: center; 
+}
+
+/* Capa de Degradado (para hacer el texto legible sobre la imagen) */
+.hero-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        77deg, 
+        rgba(0,0,0,.6) 0, 
+        rgba(0,0,0,0) 85%
+    ), 
+    linear-gradient(
+        to bottom, 
+        rgba(0,0,0,0) 0, 
+        rgba(20,20,20,.8) 100%
+    );
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    max-width: 600px; 
+    margin-left: 4%; 
+    padding-bottom: 50px; 
+}
+
+/* Título de la película */
+.movie-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom: 15px;
+}
+
+/* Meta datos (Calificación y Duración) */
+.movie-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.movie-meta .rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Estrellas en el Hero Banner */
+.hero-stars {
+    display: inline-flex;
+    gap: 3px;
+    color: #e50914;
+}
+
+.hero-stars i {
+    font-size: 1rem;
+}
+
+/* Valor del rating */
+.hero-rating-value {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Duración en el Hero Banner */
+.hero-duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #b3b3b3;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.hero-duration i {
+    font-size: 0.9rem;
+}
+
+/* Separador visual entre rating y duración */
+.hero-rating-value::after {
+    content: '•';
+    margin: 0 8px;
+    color: #666;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .movie-meta {
+        font-size: 0.9rem;
+    }
+    
+    .hero-stars i {
+        font-size: 0.9rem;
+    }
+    
+    .hero-rating-value {
+        font-size: 0.9rem;
+    }
+    
+    .hero-duration {
+        font-size: 0.85rem;
+    }
+}
+
+.hero-banner .hero-rating-value, 
+.hero-banner .movie-details strong,
+.hero-banner .movie-meta i.fas.fa-star-half-alt {
+    color: #e50914; /* Rojo Netflix */
+}
+
+/* Detalles (Reparto y Géneros) */
+.movie-details p {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.movie-details strong {
+    color: #ccc;
+    font-weight: 500;
+}
+
+/* Contenedor de Botones */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+/* Botón de Trailer/Reproducir */
+.btn-play {
+    background-color: white;
+    color: #141414;
+}
+
+.btn-play i {
+    margin-right: 10px;
+}
+
+.btn-info {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Flechas de Navegación del Carrusel */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 3;
+    padding: 20px 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s;
+    opacity: 0; 
+}
+
+.hero-banner:hover .nav-arrow {
+    opacity: 1;
+}
+
+.left-arrow {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.right-arrow {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+/*  LISTAS HORIZONTALES (Carrusel) */
+.movie-rows-container {
+    padding: 0;
+    position: relative;
+    z-index: 10; 
+    padding-top: 50px;
+}
+
+.movie-row {
+    margin-bottom: 5px;
+    padding-top: 15px; /* Espacio entre filas */
+    position: relative;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movie-row h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    padding: 0 40px;
+}
+
+.row-posters-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Contenedor principal de los pósters */
+.row-posters {
+    display: flex;
+    padding-left: 40px;
+    gap: 25px; 
+    white-space: nowrap; 
+    overflow-x: hidden; 
+    padding-bottom: 10px;     
+    scroll-behavior: smooth; 
+}
+
+.row-posters::after {
+    content: "";
+    display: block;
+    width: 4%; 
+    flex-shrink: 0; 
+    height: 1px; 
+}
+
+.row-posters::-webkit-scrollbar {
+    display: none;
+}
+
+.poster {
+    width: 135px; 
+    height: 202.5px; 
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-shrink: 0; 
+    position: relative;
+}
+
+.poster:hover {
+    transform: scale(1.05);
+    z-index: 50; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Flechas de Navegación del Carrusel */
+.row-arrow {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    padding: 20px 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: background-color 0.2s, opacity 0.2s;
+    opacity: 1; 
+    height: 100%;
+    display: flex;
+    width: 50px;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.row-arrow.left-arrow {
+    left: 40px;
+}
+
+.row-arrow.right-arrow {
+    right: 40px;
+}
+
+.row-posters-wrapper .left-arrow {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.row-posters-wrapper .right-arrow {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+Clase para ocultar la flecha si no hay más elementos a un lado
+.row-arrow.hidden {
+    display: none;
+}
+
+/* Estilos para la Ventana Modal */
+.movie-details-modal {
+    display: none; /* Oculta la modal por defecto */
+    position: fixed; 
+    z-index: 2000; /* Asegura que esté sobre todo lo demás */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8); /* Fondo oscuro transparente */
+}
+
+.modal-content {
+    background-color: #181818;
+    margin: 5% auto; /* 5% desde arriba y centrado horizontalmente */
+    padding: 0;
+    border-radius: 8px;
+    width: 80%; /* Ancho de la modal */
+    max-width: 900px; /* Ancho máximo */
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: white;
+    text-decoration: none;
+}
+
+.modal-body {
+    /* Aquí se llenará el contenido, diseño similar a tu banner promo */
+    color: white;
+    padding: 30px;
+}
+
+/* Estilos de Contenido dentro de la Modal - DEBES ADAPTARLOS A TUS CLASES */
+.modal-body .details-header {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    padding: 20px;
+}
+
+.modal-body .details-content {
+    padding: 30px;
+    display: flex;
+    gap: 30px;
+}
+
+/* PROMO BANNER */
+.promo-banner {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1a;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin: 40px 0;
+    padding: 0 4%;
+    overflow: hidden;
+}
+
+/* Degradado oscuro de izquierda a derecha */
+.promo-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        77deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.2) 75%,
+    );
+    z-index: 5;
+}
+
+/* Contenido del banner */
+.promo-content {
+    position: relative;
+    z-index: 10;
+    max-width: 45%;
+    color: white;
+    padding: 30px 20px 30px 0;
+}
+
+/* Contenedor y estilo de la Portada Superpuesta */
+.promo-poster-container {
+    position: relative;
+    z-index: 10; /* Asegurar que esté por encima del fondo y degradado */
+    /* Lo movemos hacia arriba un poco para un mejor efecto visual */
+    transform: translateY(0px); 
+    
+    /* Dimensiones basadas en el ejemplo */
+    width: 20%; 
+    max-width: 300px; 
+    
+    /* Usar flexbox para centrar la imagen dentro de su contenedor (opcional) */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    
+    /* Añadir el efecto 3D del borde */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7); 
+    border-radius: 10px;
+}
+
+.promo-poster {
+    width: 100%;
+    /* La altura se ajusta automáticamente, pero puedes forzar una relación de aspecto */
+    height: auto; 
+    object-fit: contain;
+    border-radius: 8px; /* Opcional: bordes redondeados */
+    /* Añadir una ligera sombra interna si quieres más profundidad */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive para que no se vea en móviles */
+@media (max-width: 900px) {
+    .promo-banner {
+        /* Reducir altura para móvil */
+        height: 60vh;
+        /* Asegurarse de que el contenido no se salga */
+        align-items: flex-end; 
+    }
+    
+    .promo-poster-container {
+        /* Ocultar la portada en pantallas pequeñas */
+        display: none; 
+    }
+
+    .promo-content {
+        /* Permitir que el contenido ocupe todo el ancho */
+        max-width: 100%; 
+        padding-bottom: 30px;
+    }
+}
+
+
+/* Título de la promo */
+.promo-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    line-height: 1.1;
+}
+
+/* Meta información (rating y duración) */
+.promo-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* Rating con estrellas */
+.promo-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.promo-stars {
+    display: flex;
+    gap: 2px;
+    color: #e50914;
+}
+
+.promo-stars i {
+    font-size: 1rem;
+}
+
+.promo-rating-value {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Duración */
+.promo-duration {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #b3b3b3;
+    font-weight: 500;
+}
+
+.promo-duration i {
+    font-size: 0.9rem;
+}
+
+/* Descripción */
+.promo-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #e5e5e5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Botones de acción */
+.promo-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.promo-actions button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.play-button {
+    background-color: #fff;
+    color: #000;
+}
+
+.play-button:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+    transform: scale(1.05);
+}
+
+.more-info-button {
+    background-color: rgba(109, 109, 110, 0.7);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.more-info-button:hover {
+    background-color: rgba(109, 109, 110, 0.5);
+    transform: scale(1.05);
+}
+
+/* Eliminar el fade-right ya que usamos ::after */
+.promo-fade-right {
+    display: none;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .promo-banner {
+        height: 85vh;
+    }
+    
+    .promo-title {
+        font-size: 2rem;
+    }
+    
+    .promo-content {
+        max-width: 100%;
+        padding: 20px 10px;
+    }
+    
+    .promo-description {
+        font-size: 0.95rem;
+        -webkit-line-clamp: 2;
+    }
+    
+    .promo-actions button {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+.promo-banner .promo-rating-value {
+    color: #e50914; /* Rojo Netflix */
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="../static/css/recuperarContraseña.css">
+</head>
+<body>
+    <div class="contenedor">
+        <form action="#">
+            <!-- Animación linterna -->
+            <input type="checkbox" class="input-check" id="input-check">
+            <label for="input-check" class="palanca">
+                <span class="texto off">Off</span>
+                <span class="texto on">On</span>
+            </label>
+            <div class="linterna"></div>
+
+            <!-- Título -->
+            <h2>¿Olvidaste tu contraseña?</h2>
+
+            <!-- Mensaje informativo -->
+            <p class="info-text">
+                <br>
+                Ingresa tu <b>correo electrónico</b> y te enviaremos un enlace para restablecerla.
+                <br>
+            </p>
+
+
+            <!-- Campo de correo -->
+            <div class="input-box">
+                <span class="icono">
+                    <ion-icon name="mail-unread"></ion-icon>
+                </span>
+                <input type="email" required="required">
+                <label>Email</label>
+                <div class="input-linea"></div>
+            </div>
+
+            <!-- Botón -->
+            <button type="submit">Enviar enlace</button>
+
+            <!-- Extra: enlace volver -->
+            <div class="enlace-registro">
+                <p><a href="/login/">← Volver al inicio de sesión</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Iconos -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,100 @@
+/* Importa todos los estilos base del login */
+@import url("login.css");
+
+/* Ajuste general para centrar todo en pantalla */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #0f0a06; /* mismo fondo oscuro */
+}
+
+/* Contenedor principal */
+.contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 380px;
+}
+
+.input-box {
+    position: relative;
+    width: 310px; /* Adjust this if needed */
+    margin: 30px auto; /* Using auto margins is a simple way to center block elements */
+}
+
+/* Título */
+h2 {
+    color: white;
+   text-shadow: 0 0 5px rgba(0, 201, 167, 0.6);
+    margin-bottom: 10px;
+}
+
+/* Texto informativo */
+.info-text {
+    justify-content: center;
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: none;
+    padding: 10px 15px;
+    border-left: 3px solid #00FFDD;
+    border-right: 3px solid #00FFDD;
+    border-radius: 8px;
+    background: rgba(79, 172, 254, 0.05);
+    box-shadow: inset 0 0 5px rgba(79, 172, 254, 0.2);
+}
+
+/* === INPUT CON ICONO Y LINEA DIVISORA === */
+.input-linea {
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    width: 50%;
+    bottom: 20px;
+    left: 50%;
+    height: 2.5px;
+    background: var(--white-color);
+    transition: 0.5s ease;
+   
+   
+}
+
+/* Botón */
+button {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    background: white;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.7);
+}
+
+/* Enlace volver al login */
+.enlace-registro {
+    margin-top: 15px;
+}
+
+.enlace-registro a {
+    color: #4facfe;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.enlace-registro a:hover {
+    text-decoration: underline;
+}
+
+

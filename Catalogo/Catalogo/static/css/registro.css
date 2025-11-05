@@ -1,0 +1,43 @@
+/* Importa todo el estilo del login */
+@import url("login.css");
+
+.contenedor{
+    width: 410px;
+}
+h2 {
+    color: white; /* Un verde diferente para diferenciar */
+    text-shadow: 0 0 5px rgba(0, 201, 167, 0.6);
+    transform: translateY(20px);
+}
+
+button {
+    background: white;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 201, 167, 0.6);
+}
+
+/* Diferenciamos el enlace inferior */
+.enlace-registro p {
+    color: #bbb;
+    font-size: 0.9rem;
+    transform: translateY(-15px);
+}
+
+.enlace-registro a {
+    color: #00c9a7;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.enlace-registro a:hover {
+     text-decoration: underline;
+}
