@@ -33,13 +33,17 @@
                 <span class="icono">
                     <ion-icon name="mail-unread"></ion-icon>
                 </span>
-                <input type="email" required="required">
+                <input type="email" required="required" id="email-input">
                 <label>Email</label>
                 <div class="input-linea"></div>
             </div>
 
+            <div id="mensaje-exito" class="mensaje-exito" style="display: none; color: green; margin-top: 15px; text-align: center;">
+                ¡Enlace enviado! Revisa tu correo electrónico.
+            </div>
+
             <!-- Botón -->
-            <button type="submit">Enviar enlace</button>
+            <button type="submit" id="enviar-btn">Enviar enlace</button>
 
             <!-- Extra: enlace volver -->
             <div class="enlace-registro">
@@ -51,6 +55,28 @@
     <!-- Iconos -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        // Obtenemos una referencia al formulario y al mensaje de éxito
+        const form = document.querySelector('form');
+        const mensajeExito = document.getElementById('mensaje-exito');
+        
+        // Agregamos un "escuchador" de eventos para cuando se intente enviar el formulario
+        form.addEventListener('submit', function(event) {
+            // 1. Previene el envío por defecto (lo que haría que la página se recargue)
+            event.preventDefault(); 
+
+            // O simplemente mostrar el mensaje y resetear el formulario:
+            form.reset(); // Limpia el campo de email
+            
+            // Muestra el mensaje de éxito
+            mensajeExito.style.display = 'block';
+
+            // Opcional: Ocultar el mensaje después de unos segundos para una mejor UX
+            setTimeout(() => {
+                mensajeExito.style.display = 'none';
+            }, 10000); // 10000 milisegundos = 10 segundos
+        });
+    </script>
 </body>
 </html>
 

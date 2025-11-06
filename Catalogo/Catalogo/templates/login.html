@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="contenedor">
-        <form action="#">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
             <input type="checkbox" class="input-check" id="input-check">
             <label for="input-check" class="palanca">
                 <span class="texto off">Off</span>
@@ -20,7 +21,7 @@
                 <span class="icono">
                     <ion-icon name="mail"></ion-icon>
                 </span>
-                <input type="email" required="required">
+                <input type="email" name="username" required="required">
                 <label>Email</label>
                 <div class="input-linea"></div>
             </div>
@@ -29,7 +30,7 @@
                 <span class="icono">
                     <ion-icon name="lock-closed"></ion-icon>
                 </span>
-                <input type="password" required="required">
+                <input type="password" name="password" required="required">
                 <label>Contraseña</label>
                 <div class="input-linea"></div>
             </div>
@@ -45,6 +46,15 @@
             <div class="enlace-registro">
                 <p>¿No tienes una cuenta? <a href="/registro/">Registrate</a></p>
             </div>
+            {% if messages %}
+                <ul class="messages-list">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }} alert-message"{% endif %}>
+                        {{ message }}
+                    </li>
+                    {% endfor %}    
+                </ul>
+            {% endif %}
         </form>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

@@ -35,20 +35,21 @@
             </ul>
 
             <div class="nav-icons">
-                <a href="#" class="nav-item-icon search-icon-desktop"><i class="fas fa-search"></i></a>
-                <a href="/login/" class="nav-item-icon profile-icon profile-icon-desktop"><img
-                        src="{% static 'img/user.png' %}" alt=""></a>
-
-                <div class="kebab-menu">
-                    <i class="fas fa-ellipsis-h"></i>
-                    <div class="kebab-dropdown">
-                        <a href="#" class="nav-item-icon search-icon-desktop"><i class="fas fa-search"></i></a>
-                        <a href="/login/" class="nav-item-icon profile-icon profile-icon-desktop"><img
-                                src="../static/img/user.png" alt="">
-                        </a>
-                    </div>
-                </div>
+                {% if user.is_authenticated %}
+        
+                    <form method="POST" class="navbar-actions" action="{% url 'logout' %}" style="display:inline;"> 
+                        {% csrf_token %}
+                        <p class="text-welcome"> HOLA, {{ user.username }}!</p>
+                        <button type="submit" class="btn-logout-personalizado">CERRAR SESION</button>
+                    </form>
+                    
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn-login-personalizado">
+                        INICIAR SESION
+                    </a>
+                {% endif %}
             </div>
+           
         </nav>
     </header>
 

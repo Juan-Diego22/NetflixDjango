@@ -41,6 +41,20 @@ body {
     align-items: center;
 }
 
+/* ESTILOS ESPECÍFICOS PARA MENSAJES */
+/* Error (asumiendo que la plantilla genera la clase 'error') */
+.messages-list li.error {
+    list-style: none;
+    color: #cc2900;
+    text-align: center;
+}
+
+/* Éxito (asumiendo que la plantilla genera la clase 'success') */
+.messages-list li.success {
+    list-style: none;
+    color: #00cc00;
+    text-align: center;
+}
 
 
 h2{

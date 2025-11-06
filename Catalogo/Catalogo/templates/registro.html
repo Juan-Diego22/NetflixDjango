@@ -8,7 +8,9 @@
 </head>
 <body>
     <div class="contenedor">
-        <form action="#">
+        <!-- Este bloque iterará sobre cualquier mensaje enviado por Django (como errores de contraseña, usuario existente o registro exitoso) y lo mostrará al usuario. -->
+        <form method="post" action="{% url 'registro' %}">
+            {% csrf_token %}
             <!-- Animación de palanca y linterna -->
             <input type="checkbox" class="input-check" id="input-check">
             <label for="input-check" class="palanca">
@@ -24,7 +26,7 @@
                 <span class="icono">
                     <ion-icon name="person"></ion-icon>
                 </span>
-                <input type="text" required="required">
+                <input type="text" name="username" required="required">
                 <label>Nombre completo</label>
                 <div class="input-linea"></div>
             </div>
@@ -34,7 +36,7 @@
                 <span class="icono">
                     <ion-icon name="mail"></ion-icon>
                 </span>
-                <input type="email" required="required">
+                <input type="email" name="email" required="required">
                 <label>Email</label>
                 <div class="input-linea"></div>
             </div>
@@ -44,7 +46,7 @@
                 <span class="icono">
                     <ion-icon name="lock-closed"></ion-icon>
                 </span>
-                <input type="password" required="required">
+                <input type="password" name="password" required="required">
                 <label>Contraseña</label>
                 <div class="input-linea"></div>
             </div>
@@ -54,7 +56,7 @@
                 <span class="icono">
                     <ion-icon name="lock-closed"></ion-icon>
                 </span>
-                <input type="password" required="required">
+                <input type="password" name="password2" required="required">
                 <label>Confirmar contraseña</label>
                 <div class="input-linea"></div>
             </div>
@@ -66,7 +68,17 @@
             <div class="enlace-registro">
                 <p>¿Ya tienes una cuenta? <a href="/login/">Inicia sesión</a></p>
             </div>
+            {% if messages %}
+                <ul class="messages-list">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }} alert-message"{% endif %}>
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </form>
+        
     </div>
 
     <!-- Iconos -->

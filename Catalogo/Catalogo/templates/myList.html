@@ -10,19 +10,6 @@
     
     {% block content %}
         <h1 class="main-title">Mi Lista</h1>
-
-        <!-- SECCIÓN DE BÚSQUEDA -->
-        <section class="search-section">
-            <div class="search-input-group">
-                <input type="text" id="movie-search-input" placeholder="Busca películas para añadir a tus listas...">
-                <button id="search-movie-btn" class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-
-            <!-- Contenedor de resultados de búsqueda -->
-            <div id="search-results-container" class="search-results-container">
-                <p class="initial-msg">Introduce un título para empezar a buscar entre las películas disponibles.</p>
-            </div>
-            
             <!-- Modal para seleccionar la lista de destino -->
             <div id="add-to-list-modal" class="modal hidden">
                 <div class="modal-content">
@@ -34,8 +21,6 @@
                     <button id="confirm-add-btn" class="btn-confirm" disabled>Añadir</button>
                 </div>
             </div>
-        </section>
-
         <!-- Botón para crear nueva lista -->
         <button id="create-list-btn" class="btn-primary-list">
             <i class="fas fa-plus-circle"></i> Crear Nueva Lista
@@ -67,7 +52,6 @@
     {% endblock %}
     {% block scripts %} 
     <script src="../static/js/myList.js"></script>
-    <script src="../static/js/script.js"></script>
     {% endblock %}
 </body>
 </html>

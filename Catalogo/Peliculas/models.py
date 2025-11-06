@@ -24,6 +24,7 @@ class Pelicula(models.Model):
         verbose_name_plural = "Películas del Catálogo"
 
 # 2. Lista Personalizada (Lista del Usuario)
+# 2. Lista Personalizada (Lista del Usuario)
 class ListaPersonalizada(models.Model):
     """Modelo para las listas personalizadas de los usuarios."""
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='listas_personalizadas', verbose_name="Usuario")
@@ -32,7 +33,7 @@ class ListaPersonalizada(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Creación")
     fecha_actualizacion = models.DateTimeField(auto_now=True, verbose_name="Última Actualización")
 
-    def __str__(self):
+    def _str_(self):
         return f"Lista '{self.nombre}' de {self.usuario.username}"
 
     class Meta:
@@ -40,4 +41,3 @@ class ListaPersonalizada(models.Model):
         verbose_name_plural = "Listas Personalizadas"
         # Asegura que un usuario no tenga dos listas con el mismo nombre
         unique_together = ('usuario', 'nombre')
-

@@ -63,7 +63,7 @@ body {
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s, box-shadow 0.2s;
-    height: 200px; 
+    height: 200px; /* Altura mantenida */
     cursor: pointer;
 }
 
@@ -73,22 +73,44 @@ body {
 }
 
 /* Imagen de Portada (Fondo) */
-.list-cover {
+.list-cover-collage { 
     width: 100%;
     height: 100%;
-    object-fit: cover; 
     position: absolute;
     top: 0;
     left: 0;
-    filter: brightness(50%); 
+    display: grid; /* Usar Grid para 2x2 */
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 0;
+    filter: brightness(50%); /* Oscurecer el fondo */
     transition: filter 0.2s;
 }
 
-.list-card:hover .list-cover {
+.list-card:hover .list-cover-collage {
     filter: brightness(70%);
 }
 
-.list-content {
+/* Estilo para cada imagen individual */
+.list-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Estilo para los placeholders vacíos (el signo de interrogación) */
+.empty-cover-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem; 
+    font-weight: 900;
+    color: #444; 
+    background-color: #111; 
+}
+
+.list-content { 
     position: relative;
     z-index: 10;
     padding: 15px 20px;
@@ -100,7 +122,20 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); 
 }
 
-.list-name {
+/* Asegúrate de usar la clase de tu JS: .list-info para el contenedor de texto */
+.list-info {
+    position: absolute; 
+    z-index: 10;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); 
+}
+
+/* Nombre de la Lista */
+.list-title { 
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 5px;
@@ -109,10 +144,17 @@ body {
     text-overflow: ellipsis; 
 }
 
+/* Conteo de Películas */
+.list-count { 
+    font-size: 1rem;
+    font-weight: 500;
+    color: #e50914; 
+    margin-bottom: 15px;
+}
+
+/* Ocultar el texto de la última película agregada */
 .list-last-movie {
-    font-size: 0.9rem;
-    color: #b3b3b3;
-    margin-bottom: 10px;
+    display: none; 
 }
 
 .list-count {
@@ -153,113 +195,6 @@ body {
 
 .action-btn:hover {
     background: rgba(229, 9, 20, 0.8); 
-}
-
-/* Sección de Búsqueda de Películas */
-.search-input-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.search-input {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border-radius: 4px;
-    border: 1px solid #555;
-    background-color: #2a2a2a;
-    color: white;
-    font-size: 1rem;
-}
-
-.search-btn, .hide-search-btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.search-btn {
-    background-color: #3c93d5; 
-    color: white;
-}
-.search-btn:hover { background-color: #2b7bc4; }
-
-.hide-search-btn {
-    background-color: #444;
-    color: white;
-}
-.hide-search-btn:hover { background-color: #555; }
-
-
-/* Contenedor de Resultados (Grid) */
-.search-results-container {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    padding-top: 10px;
-}
-
-.movie-result-card {
-    background-color: #2a2a2a;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.movie-result-card:hover {
-    transform: scale(1.05);
-}
-
-.movie-result-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-}
-
-.movie-result-info {
-    padding: 10px;
-    text-align: center;
-}
-
-.movie-result-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.add-movie-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.2s;
-    font-size: 3rem;
-    pointer-events: none; 
-}
-
-.movie-result-card:hover .add-movie-overlay {
-    opacity: 1;
 }
 
 /* Estilos del Modal (Base) */

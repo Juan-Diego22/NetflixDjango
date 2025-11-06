@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Catalogo.views import *
+from Catalogo.views import * 
+from django.contrib.auth import views as auth_views 
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,12 +31,13 @@ router.register(r'listas', ListaPersonalizadaViewSet, basename='lista')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', login),
-    path('registro/', registro),
+    path('login/', loginView, name="login"),
+    path('registro/', registro, name="registro"),
     path('recuperarContraseña/', recuperarContraseña),
-    path('index/', index),
+    path('index/', index, name="index"),
     path('movies/', movies),
     path('lista/', myList),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('api/', include(router.urls)),
 ]
 

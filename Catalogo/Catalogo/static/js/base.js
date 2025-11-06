@@ -35,19 +35,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    if (kebabMenu && kebabDropdown) {
-        kebabMenu.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            kebabDropdown.classList.toggle('active')
-        });
-
-        document.addEventListener('click', (e) => {
-            if (kebabDropdown.classList.contains('active') && !kebabMenu.contains(e.target)) {
-                kebabDropdown.classList.remove('active');
-            }
-        });
-    }
-
 });
 
