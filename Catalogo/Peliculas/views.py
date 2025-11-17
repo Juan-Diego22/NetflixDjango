@@ -32,7 +32,7 @@ class PeliculaViewSet(viewsets.ReadOnlyModelViewSet):
             data.append({
                 'id': pelicula.id,
                 'titulo': pelicula.titulo,
-                'title': pelicula.titulo,  # compatibilidad con frontend (english keys)
+                'title': pelicula.titulo,  
                 'descripcion': pelicula.descripcion,
                 'description': pelicula.descripcion,  
                 'portadaUrl': portada_url,
@@ -67,7 +67,6 @@ class PeliculaViewSet(viewsets.ReadOnlyModelViewSet):
 class ListaPersonalizadaViewSet(viewsets.ModelViewSet):
     """
     ViewSet para gestionar las listas personalizadas del usuario.
-    CRUD completo + acciones personalizadas (add-movie, remove-movie).
     """
     serializer_class = ListaPersonalizadaSerializer
     permission_classes = [IsAuthenticated]

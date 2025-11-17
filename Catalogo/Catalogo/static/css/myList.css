@@ -63,7 +63,7 @@ body {
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s, box-shadow 0.2s;
-    height: 200px; /* Altura mantenida */
+    height: 200px; 
     cursor: pointer;
 }
 
@@ -122,7 +122,6 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); 
 }
 
-/* Asegúrate de usar la clase de tu JS: .list-info para el contenedor de texto */
 .list-info {
     position: absolute; 
     z-index: 10;

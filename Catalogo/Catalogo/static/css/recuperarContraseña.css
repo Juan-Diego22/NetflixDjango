@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #0f0a06; /* mismo fondo oscuro */
+    background: #0f0a06;
 }
 
 /* Contenedor principal */
@@ -21,8 +21,8 @@ body {
 
 .input-box {
     position: relative;
-    width: 310px; /* Adjust this if needed */
-    margin: 30px auto; /* Using auto margins is a simple way to center block elements */
+    width: 310px; 
+    margin: 30px auto; 
 }
 
 /* Título */

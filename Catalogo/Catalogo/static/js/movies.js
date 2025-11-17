@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 1. CONFIGURACIÓN Y VARIABLES GLOBALES
-    
     const API_BASE_URL = 'http://127.0.0.1:8000/api/'; 
     const MOVIES_API_URL = `${API_BASE_URL}peliculas/`;
     const LISTS_API_URL = `${API_BASE_URL}listas/`;
@@ -23,11 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Variables de estado
     let selectedMovieId = null;
 
-    // 2. FUNCIONES DE AUTENTICACIÓN (CORREGIDO PARA DJANGO SESSION)
+    // 2. FUNCIONES DE UTILIDAD Y CONFIGURACIÓN
     
-    /**
-     * Obtiene el token CSRF de las cookies
-     */
+    /* Obtiene el token CSRF de las cookies */
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -56,15 +53,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (contentType) {
             headers['Content-Type'] = contentType;
         }
-        
         return headers;
     }
+    
+    // 3. FUNCIONES DE RENDERIZADO 
 
-    // 3. FUNCIONES DE RENDERIZADO DEL CATÁLOGO
-
-    /**
-     * Renderiza una tarjeta de película en el catálogo
-     */
+    /* Renderiza una tarjeta de película en el catálogo */
     function renderMovieCard(movie) {
         const card = document.createElement('div');
         card.classList.add('poster-item');
@@ -78,9 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <img src="${posterUrl}" alt="${movie.title}" class="grid-poster">
             <p class="movie-title-label">${movie.title}</p>
         `;
-
         return card;
     }
+
+    // 4. FUNCIONES DE CARGA DE DATOS
 
     /* Carga todas las películas desde la API y las renderiza */
     async function fetchAllMovies() {
@@ -101,96 +96,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     MOVIE_CATALOG_CONTAINER.appendChild(movieCard);
                 });
             } else {
-                MOVIE_CATALOG_CONTAINER.innerHTML = '<p class="empty-msg">El catálogo está vacío. ¡Añade películas desde el administrador de Django!</p>';
+                MOVIE_CATALOG_CONTAINER.innerHTML = `<p class="empty-msg">El catálogo está vacío.
+                ¡Añade películas desde el administrador de Django!</p>`;
             }
 
         } catch (error) {
             console.error('Error al cargar películas:', error);
-            MOVIE_CATALOG_CONTAINER.innerHTML = `<p class="error-msg">No se pudo cargar el catálogo. Verifica que tu servidor de Django esté corriendo. Detalle: ${error.message}</p>`;
+            MOVIE_CATALOG_CONTAINER.innerHTML = `<p class="error-msg">No se pudo cargar el catálogo. 
+                Verifica que tu servidor de Django esté corriendo. Detalle: ${error.message}</p>`;
         }
-    }
-
-    // 4. MODAL DE DETALLES DE PELÍCULA
-
-    async function showMovieDetailsModal(movieId) {
-        if (!MOVIE_DETAILS_MODAL || !DETAILS_MODAL_BODY) {
-            console.warn('Modal de detalles no encontrado en el DOM');
-            return;
-        }
-
-        try {
-            const response = await fetch(`${MOVIES_API_URL}${movieId}/`);
-            
-            if (!response.ok) {
-                throw new Error(`Error al cargar detalles: ${response.status}`);
-            }
-            
-            const movie = await response.json();
-            
-            console.log('🎬 Datos de película:', movie);
-            
-            const posterUrl = movie.portadaUrl || '../static/img/default-poster.png';
-            const title = movie.title || 'Título no disponible';
-            const description = movie.description || 'Sin descripción disponible.';
-            const year = movie.year || 'N/A';
-            const genero = movie.nombre || 'N/A';
-            
-            DETAILS_MODAL_BODY.innerHTML = `
-                <div class="details-poster-column">
-                    <img src="${posterUrl}" alt="${title}" class="details-poster-image">
-                </div>
-                <div class="details-info-column">
-                    <h2 class="details-movie-title">${title}</h2>
-                    
-                    <button class="details-add-to-list-btn" id="add-to-list-from-details">
-                        <i class="fas fa-plus"></i>
-                        Añadir a Lista
-                    </button>
-                    
-                    <p class="details-description">${description}</p>
-                    
-                    <div class="details-additional-info">
-                        <div class="details-info-row">
-                            <span class="details-info-label">Año:</span>
-                            <span class="details-info-value">${year}</span>
-                            <span class="details-info-label">Género:</span>
-                            <span class="details-info-value">${genero}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            MOVIE_DETAILS_MODAL.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            const addBtn = document.getElementById('add-to-list-from-details');
-            if (addBtn) {
-                addBtn.addEventListener('click', () => {
-                    closeMovieDetailsModal(); 
-                    selectedMovieId = movie.id;
-                    openAddToListModal(movie.title);
-                });
-            }
-
-        } catch (error) {
-            console.error('Error al cargar detalles de la película:', error);
-            alert('No se pudieron cargar los detalles de la película.');
-        }
-    }
-
-    function closeMovieDetailsModal() {
-        if (MOVIE_DETAILS_MODAL) {
-            MOVIE_DETAILS_MODAL.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }
-
-    // 5. MODAL DE AÑADIR A LISTA
-
-    async function openAddToListModal(movieTitle) {
-        MODAL_MOVIE_TITLE.textContent = movieTitle;
-        await loadUserListsForModal();
-        ADD_TO_LIST_MODAL.classList.remove('hidden');
     }
 
     /* Carga las listas del usuario en el modal */
@@ -204,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Agregamos credentials: 'include' para enviar cookies de sesión
             const response = await fetch(LISTS_API_URL, { 
                 headers,
-                credentials: 'include' // ← CRÍTICO: Envía cookies de sesión
+                credentials: 'include' 
             });
             
             if (response.status === 401 || response.status === 403) {
@@ -247,6 +161,8 @@ document.addEventListener('DOMContentLoaded', function() {
             MODAL_LIST_OPTIONS.innerHTML = '<p class="error-msg">Error al cargar tus listas.</p>';
         }
     }
+
+    // 5. FUNCIONES DE LÓGICA
 
     /* Añade la película a la lista seleccionada */
     async function handleAddMovie() {
@@ -299,14 +215,106 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // 6. FUNCIONES DE CONTROL DE MODALES
+
+    /**
+     * Muestra el modal con los detalles de una película
+     * @param {number} movieId - ID de la película
+     */
+    async function showMovieDetailsModal(movieId) { 
+        if (!MOVIE_DETAILS_MODAL || !DETAILS_MODAL_BODY) {
+            console.warn('Modal de detalles no encontrado en el DOM');
+            return;
+        }
+
+        try {
+            const response = await fetch(`${MOVIES_API_URL}${movieId}/`);
+            
+            if (!response.ok) {
+                throw new Error(`Error al cargar detalles: ${response.status}`);
+            }
+            
+            const movie = await response.json();
+            
+            console.log('🎬 Datos de película:', movie);
+            
+            const posterUrl = movie.portadaUrl || '../media/default-poster.png';
+            const title = movie.title || 'Título no disponible';
+            const description = movie.description || 'Sin descripción disponible.';
+            const year = movie.year || 'N/A';
+            const genero = movie.nombre || 'N/A';
+            
+            DETAILS_MODAL_BODY.innerHTML = `
+                <div class="details-poster-column">
+                    <img src="${posterUrl}" alt="${title}" class="details-poster-image">
+                </div>
+                <div class="details-info-column">
+                    <h2 class="details-movie-title">${title}</h2>
+                    
+                    <button class="details-add-to-list-btn" id="add-to-list-from-details">
+                        <i class="fas fa-plus"></i>
+                        Añadir a Lista
+                    </button>
+                    
+                    <p class="details-description">${description}</p>
+                    
+                    <div class="details-additional-info">
+                        <div class="details-info-row">
+                            <span class="details-info-label">Año:</span>
+                            <span class="details-info-value">${year}</span>
+                            <span class="details-info-label">Género:</span>
+                            <span class="details-info-value">${genero}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            MOVIE_DETAILS_MODAL.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            const addBtn = document.getElementById('add-to-list-from-details');
+            if (addBtn) {
+                addBtn.addEventListener('click', () => {
+                    closeMovieDetailsModal(); 
+                    selectedMovieId = movie.id;
+                    openAddToListModal(movie.title);
+                });
+            }
+
+        } catch (error) {
+            console.error('Error al cargar detalles de la película:', error);
+            alert('No se pudieron cargar los detalles de la película.');
+        }
+    }
+
+    // Cierra el modal de detalles de película
+    function closeMovieDetailsModal() {
+        if (MOVIE_DETAILS_MODAL) {
+            MOVIE_DETAILS_MODAL.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    /**
+     * Abre el modal para añadir película a una lista
+     * @param {string} movieTitle - Título de la película
+     */
+    async function openAddToListModal(movieTitle) {
+        MODAL_MOVIE_TITLE.textContent = movieTitle;
+        await loadUserListsForModal();
+        ADD_TO_LIST_MODAL.classList.remove('hidden');
+    }
+
+    // Cierra el modal de añadir a la lista
     function closeAddToListModal() {
         ADD_TO_LIST_MODAL.classList.add('hidden');
         selectedMovieId = null;
         CONFIRM_ADD_BTN.disabled = true; 
     }
 
-    // 6. EVENT LISTENERS
+    //7. EVENT LISTENERS
 
+    // Click en tarjeta de película
     MOVIE_CATALOG_CONTAINER.addEventListener('click', (e) => {
         const posterItem = e.target.closest('.poster-item');
         if (posterItem) {
@@ -317,6 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Cerrar modal de detalles de película
     if (DETAILS_CLOSE_BTN) {
         DETAILS_CLOSE_BTN.addEventListener('click', closeMovieDetailsModal);
     }
@@ -329,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Cerrar modales con la tecla Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (MOVIE_DETAILS_MODAL.classList.contains('active')) {
@@ -340,14 +350,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Confirma añadir película
     CONFIRM_ADD_BTN.addEventListener('click', handleAddMovie);
 
+    // Habilita el botón al seleccionar lista
     MODAL_LIST_OPTIONS.addEventListener('change', (e) => {
         if (e.target.name === 'list-selection') {
             CONFIRM_ADD_BTN.disabled = false;
         }
     });
     
+    // Cerrar modal de añadir a lista
     if (MODAL_CLOSE_BTN) {
         MODAL_CLOSE_BTN.addEventListener('click', closeAddToListModal);
     }
@@ -360,8 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 7. INICIALIZACIÓN
-    
+    // INICIALIZACIÓN
     fetchAllMovies(); 
     
 });

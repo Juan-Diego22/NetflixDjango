@@ -286,7 +286,7 @@
     cursor: pointer;
     z-index: 20;
     padding: 20px 10px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s, opacity 0.2s;
     opacity: 1; 
     height: 100%;
@@ -304,6 +304,7 @@
     right: 40px;
 }
 
+
 .row-posters-wrapper .left-arrow {
     left: 0;
     border-radius: 0 4px 4px 0;
@@ -314,7 +315,7 @@
     border-radius: 4px 0 0 4px;
 }
 
-Clase para ocultar la flecha si no hay más elementos a un lado
+/* Clase para ocultar la flecha si no hay más elementos a un lado */
 .row-arrow.hidden {
     display: none;
 }

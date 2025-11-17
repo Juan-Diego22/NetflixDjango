@@ -155,12 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (movieTitle) movieTitle.textContent = movie.title || movie.name;
                     if (movieDescription) movieDescription.textContent = movie.overview || 'Sin descripción disponible.';
                     
-                    // *** CORRECCIÓN CLAVE AQUÍ: RATING Y DURACIÓN ***
                     if (movieRating) {
                         const ratingValue = movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A';
                         const runtime = movieDetails.runtime || 0;
                         
-                        // Formato de Duración (ej: 1h 30min)
+                        // Formato de Duración. Ej. 1h 30min
                         const hours = Math.floor(runtime / 60);
                         const minutes = runtime % 60;
                         const durationText = hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
@@ -174,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="hero-duration"><i class="far fa-clock"></i> ${durationText}</span>
                         `;
                     }
-                    // *** FIN CORRECCIÓN ***
 
                     // Reparto
                     if (starring && movieDetails.credits && movieDetails.credits.cast) {
@@ -195,9 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    /*
-     Carga y rellena los datos del banner promocional (el de más abajo).
-     */
+    /* Carga y rellena los datos del banner promocional */
     async function loadPromoBanner() {
         const promoBanner = document.getElementById('promo-banner');
         if (!promoBanner) {
@@ -248,13 +244,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const ratingValue = movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A';
                 const runtime = movieDetails.runtime || 0;
 
-                // 1. Mostrar Rating
+                // Mostrar Rating
                 if (promoStarsDiv && promoRatingValueSpan) {
                     promoStarsDiv.innerHTML = generateStars(ratingValue);
                     promoRatingValueSpan.textContent = ratingValue;
                 }
 
-                // 2. Mostrar Duración
+                // Mostrar Duración
                 if (promoDurationSpan && runtime) {
                     const hours = Math.floor(runtime / 60);
                     const minutes = runtime % 60;
@@ -350,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // LÓGICA DE CAROUSEL Y EVENTOS
+    // LÓGICA DE CARRUSEL Y EVENTOS
 
     function setupRowCarousels() {
         document.querySelectorAll('.row-posters-wrapper').forEach(wrapper => {
@@ -420,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Generación del HTML para el Rating (Estrellas + Valor)
                         const starsHtml = generateStars(ratingValue);
                         
-                        // Formato de Duración (ej: 1h 30min)
+                        // Formato de Duración 
                         const hours = Math.floor(runtime / 60);
                         const minutes = runtime % 60;
                         const durationText = hours > 0 ? `${hours}h ${minutes}min` : `${minutes}min`;
@@ -488,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Eventos de la Modal
     if (modal && closeBtn && modalBody) {
-        // 1. Abrir modal al hacer clic en el póster
+        // Abrir modal al hacer clic en el póster
         document.addEventListener('click', (e) => {
             const poster = e.target.closest('.poster');
             const movieId = poster ? poster.dataset.movieId : null;
@@ -497,13 +493,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 2. Cerrar modal al hacer clic en la X
+        // Cerrar modal al hacer clic en la X
         closeBtn.onclick = () => {
             modal.style.display = "none";
             document.body.classList.remove('no-scroll');
         };
 
-        // 3. Cerrar modal si el usuario hace clic fuera de ella
+        // Cerrar modal si el usuario hace clic fuera de ella
         window.onclick = (event) => {
             if (event.target == modal) {
                 modal.style.display = "none";

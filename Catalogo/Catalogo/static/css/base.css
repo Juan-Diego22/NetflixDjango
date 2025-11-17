@@ -396,7 +396,6 @@ form[action*="logout"] {
     vertical-align: middle;
 }
 
-/* Opcional: Animación suave al aparecer */
 @keyframes fadeIn {
     from {
         opacity: 0;

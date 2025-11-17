@@ -20,21 +20,19 @@ from Catalogo.views import *
 from django.contrib.auth import views as auth_views 
 from django.conf import settings
 from django.conf.urls.static import static
-
-# DRF router for API endpoints
 from rest_framework.routers import DefaultRouter
 from Peliculas.views import PeliculaViewSet, ListaPersonalizadaViewSet
 
-router = DefaultRouter()
-router.register(r'peliculas', PeliculaViewSet, basename='pelicula')
-router.register(r'listas', ListaPersonalizadaViewSet, basename='lista')
+router = DefaultRouter() 
+router.register(r'peliculas', PeliculaViewSet, basename='pelicula') # Registrar el ViewSet de películas
+router.register(r'listas', ListaPersonalizadaViewSet, basename='lista') # Registrar el ViewSet de listas personalizadas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', loginView, name="login"),
     path('registro/', registro, name="registro"),
     path('recuperarContraseña/', recuperarContraseña),
-    path('index/', index, name="index"),
+    path('', index, name="index"),
     path('movies/', movies),
     path('lista/', myList),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),

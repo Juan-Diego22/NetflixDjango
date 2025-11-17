@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator
 # Obtiene el modelo de usuario activo (django.contrib.auth.User)
 User = get_user_model() 
 
-# 1. Pelicula (Catálogo del Administrador)
+# Pelicula (Catálogo del Administrador)
 class Pelicula(models.Model):
     """Modelo para las películas subidas y gestionadas por el Administrador."""
     titulo = models.CharField(max_length=255, unique=True, verbose_name="Título")
@@ -19,12 +19,12 @@ class Pelicula(models.Model):
     def __str__(self):
         return self.titulo
 
-    class Meta:
+    class Meta: 
         verbose_name = "Película del Catálogo"
         verbose_name_plural = "Películas del Catálogo"
 
-# 2. Lista Personalizada (Lista del Usuario)
-# 2. Lista Personalizada (Lista del Usuario)
+
+# Lista Personalizada (Lista del Usuario)
 class ListaPersonalizada(models.Model):
     """Modelo para las listas personalizadas de los usuarios."""
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='listas_personalizadas', verbose_name="Usuario")

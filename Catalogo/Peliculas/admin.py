@@ -1,16 +1,16 @@
 from django.contrib import admin
 from .models import Pelicula, ListaPersonalizada
 
-# 1. Registro del modelo Pelicula
-@admin.register(Pelicula)
+# Registro del modelo Pelicula
+@admin.register(Pelicula) 
 class PeliculaAdmin(admin.ModelAdmin):
     # Campos que se muestran en la tabla de listado
     list_display = ('titulo', 'anioLanzamiento', 'portada')
     # Permite buscar por título
     search_fields = ('titulo', 'descripcion') 
 
-# 2. Registro del modelo ListaPersonalizada
-@admin.register(ListaPersonalizada)
+# Registro del modelo ListaPersonalizada
+@admin.register(ListaPersonalizada) 
 class ListaPersonalizadaAdmin(admin.ModelAdmin):
     # Campos que se muestran en la tabla de listado
     list_display = ('nombre', 'usuario', 'pelicula_count', 'fecha_creacion')

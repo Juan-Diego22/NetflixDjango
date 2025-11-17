@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 
-# LÓGICA DE INICIO DE SESIÓN
 def loginView(request):
     if request.method == 'POST':
         # 1. Obtener el input (que puede ser Email o Username)
@@ -24,33 +23,33 @@ def loginView(request):
 
         authenticated_user = None
         if user is not None:
-            # 2. Autenticar: Usamos el nombre de usuario REAL del usuario encontrado
+            # Autenticar: Usamos el nombre de usuario REAL del usuario encontrado
             # Esto es necesario porque authenticate por defecto solo usa el campo 'username'
             authenticated_user = authenticate(request, username=user.username, password=password)
 
         if authenticated_user is not None:
-            # 3. Iniciar sesión y redirigir
+            # Iniciar sesión y redirigir
             login(request, authenticated_user) 
             messages.success(request, f'¡Bienvenido de nuevo, {authenticated_user.username}!')
             return redirect('index') 
         else:
-            # 4. Credenciales inválidas (falla en el lookup o contraseña incorrecta)
+            # Credenciales inválidas (falla en el lookup o contraseña incorrecta)
             messages.error(request, 'Credenciales inválidas. Inténtalo de nuevo.')
             return render(request, 'login.html')
 
     # Si es una petición GET, simplemente muestra el formulario
     return render(request, 'login.html')
 
-# LÓGICA DE REGISTRO
+
 def registro(request):
     if request.method == 'POST':
-        # 1. Obtener datos del formulario
+        # Obtener datos del formulario
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
 
-        # 2. Validaciones
+        # Validaciones
         if password != password2:
             messages.error(request, 'Las contraseñas no coinciden.')
             return render(request, 'registro.html')
@@ -63,12 +62,12 @@ def registro(request):
             messages.error(request, 'El correo electrónico ya está en uso.')
             return render(request, 'registro.html')
 
-        # 3. Creación del usuario (USA EL MODELO USER DE DJANGO)
+        # Creación del usuario (USA EL MODELO USER DE DJANGO)
         # El método create_user se encarga de aplicar el HASH a la contraseña.
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
-        # 4. Mensaje de éxito y redirección
+        # Mensaje de éxito y redirección
         messages.success(request, 'Registro exitoso. ¡Ya puedes iniciar sesión!')
         return redirect('login') # Redirige al login 
 
