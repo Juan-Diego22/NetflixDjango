@@ -22,4 +22,4 @@ A full-stack Netflix clone built with Django, featuring user authentication, ext
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
 
 ## Screenshots
-()
+![Clon de Netflix](screenshorts/agregarPeliculaadmin.png) 
