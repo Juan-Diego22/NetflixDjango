@@ -1,4 +1,4 @@
-# DjangoFlix – Netflix Clone with Django & MySQL 🎬
+ Netflix Clone with Django 🎬
 
 A full-stack Netflix clone built with Django, featuring user authentication, external movie API integration, admin panel for content management, and personalized "My List" functionality.
 
