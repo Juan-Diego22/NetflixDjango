@@ -1,11 +1,11 @@
- NETFLIX CLONE WITH DJANGO 🎬
+# NETFLIX CLONE WITH DJANGO 🎬
 
 
 ![Clon de Netflix](screenshorts/netflix.png) 
 
 A full-stack Netflix clone built with Django, featuring user authentication, external movie API integration, admin panel for content management, and personalized "My List" functionality.
 
-## Key Features
+# Key Features
 - User registration, login and profile management
 - Integration with external movie API (e.g., TMDB) to fetch and display real movies
 - Django Admin panel to add/remove movies
