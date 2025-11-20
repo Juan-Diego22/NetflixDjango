@@ -1,4 +1,5 @@
- Netflix Clone with Django 🎬
+ NETFLIX CLONE WITH DJANGO 🎬
+
 
 A full-stack Netflix clone built with Django, featuring user authentication, external movie API integration, admin panel for content management, and personalized "My List" functionality.
 
@@ -16,7 +17,6 @@ A full-stack Netflix clone built with Django, featuring user authentication, ext
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=yellow)
 ![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ## Screenshots
 (Here your amazing screenshots)
