@@ -3,6 +3,9 @@
 
 ![Clon de Netflix](screenshorts/netflix.png) 
 ![Clon de Netflix](screenshorts/netflix2.png) 
+![Clon de Netflix](screenshorts/netflix3.png) 
+![Clon de Netflix](screenshorts/netflix4.png) 
+
 
 A full-stack Netflix clone built with Django, featuring user authentication, external movie API integration, admin panel for content management, and personalized "My List" functionality.
 
