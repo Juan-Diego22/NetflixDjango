@@ -24,3 +24,8 @@ A full-stack Netflix clone built with Django, featuring user authentication, ext
 ## Screenshots
 ![Clon de Netflix](screenshorts/agregarPeliculaadmin.png) 
 ![Clon de Netflix](screenshorts/vistaenPelicula.png) 
+![Clon de Netflix](screenshorts/descripcionPel.png) 
+![Clon de Netflix](screenshorts/CreacionLista.png) 
+![Clon de Netflix](screenshorts/peliculaAlista.png)
+![Clon de Netflix](screenshorts/listaconPelicula.png)
+![Clon de Netflix](screenshorts/peliculaenLista.png) 
