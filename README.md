@@ -1,6 +1,5 @@
  NETFLIX CLONE WITH DJANGO 🎬
 
-👉 **Live Demo**: [Coming soon – deploying now!] (link when ready)
 
 ![Clon de Netflix](screenshorts/netflix.png) 
 
@@ -23,4 +22,4 @@ A full-stack Netflix clone built with Django, featuring user authentication, ext
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
 
 ## Screenshots
-(Here your amazing screenshots)
+()
