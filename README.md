@@ -15,12 +15,12 @@
 
 <table>
   <tr>
-    <td><img src="screenshorts/netflix.png" alt="Página Principal" width="400"/></td>
-    <td><img src="screenshorts/netflix2.png" alt="Catálogo" width="400"/></td>
+    <td><img src="screenshots/netflix.png" alt="Página Principal" width="400"/></td>
+    <td><img src="screenshots/netflix2.png" alt="Catálogo" width="400"/></td>
   </tr>
   <tr>
-    <td><img src="screenshorts/netflix3.png" alt="Explorar Contenido" width="400"/></td>
-    <td><img src="screenshorts/netflix4.png" alt="Mi Lista" width="400"/></td>
+    <td><img src="screenshots/netflix3.png" alt="Explorar Contenido" width="400"/></td>
+    <td><img src="screenshots/netflix4.png" alt="Mi Lista" width="400"/></td>
   </tr>
 </table>
 
@@ -91,7 +91,7 @@ Antes de comenzar, asegúrate de tener instalado:
 
 ---
 
-## 🚀 Instalación y Configuración
+##  Instalación y Configuración
 
 ### 1️⃣ Clonar el repositorio
 
@@ -230,7 +230,7 @@ NetflixDjango/
 │   ├── forms.py                  # Formularios Django
 │   └── admin.py                  # Configuración del panel admin
 │
-├── screenshorts/                 # Capturas de pantalla para README
+├── screenshots/                 # Capturas de pantalla para README
 ├── manage.py                     # Script principal de Django
 ├── requirements.txt              # Dependencias del proyecto
 ├── .env                          # Variables de entorno (no incluir en Git)
@@ -296,15 +296,15 @@ NetflixDjango/
 ### 🎬 Funcionalidades del Sistema
 
 #### Panel de Administración
-![Panel Admin](screenshorts/agregarPeliculaadmin.png)
+![Panel Admin](screenshots/agregarPeliculaadmin.png)
 *Interfaz para agregar películas desde el panel de administración de Django*
 
 #### Vista de Catálogo
-![Vista Catálogo](screenshorts/vistaenPelicula.png)
+![Vista Catálogo](screenshots/vistaenPelicula.png)
 *Exploración del catálogo completo de películas disponibles*
 
 #### Descripción de Película
-![Descripción](screenshorts/descripcionPel.png)
+![Descripción](screenshots/descripcionPel.png)
 *Vista detallada con información completa, trailer y opciones*
 
 #### Creación de Lista Personalizada
@@ -312,15 +312,15 @@ NetflixDjango/
 *Interfaz para crear una nueva lista personalizada "Mi Lista"*
 
 #### Añadir Película a Lista
-![Añadir a Lista](screenshorts/peliculaAlista.png)
+![Añadir a Lista](screenshots/peliculaAlista.png)
 *Proceso de agregar una película a la lista personalizada*
 
 #### Lista con Contenido
-![Lista con Películas](screenshorts/listaconPelicula.png)
+![Lista con Películas](screenshots/listaconPelicula.png)
 *Visualización de la lista con películas añadidas*
 
 #### Gestión de Mi Lista
-![Mi Lista](screenshorts/peliculaenLista.png)
+![Mi Lista](screenshots/peliculaenLista.png)
 *Vista completa de "Mi Lista" con todas las películas guardadas*
 
 ---
@@ -424,27 +424,14 @@ Las contribuciones son bienvenidas y apreciadas. Si deseas mejorar este proyecto
 
 ---
 
-## 📄 Licencia
-
-Este proyecto está bajo la licencia MIT. Esto significa que puedes:
-
-- ✅ Usar el código comercialmente
-- ✅ Modificar el código
-- ✅ Distribuir el código
-- ✅ Uso privado
-
-Ver el archivo [LICENSE](LICENSE) para más detalles.
-
----
-
 ## 👨‍💻 Autor
 
 **Juan Diego**
 
 - 🐙 GitHub: [@Juan-Diego22](https://github.com/Juan-Diego22)
-- 💼 LinkedIn: [Tu perfil de LinkedIn aquí]
-- 📧 Email: tu.email@ejemplo.com
-- 🌐 Portfolio: [Tu sitio web si lo tienes]
+- 💼 LinkedIn: [https://www.linkedin.com/in/juan-diego-lopez-carvajal-5079462bb/]
+- 📧 Email: lopezc222@hotmail.com
+- 🌐 Portfolio: [https://github.com/Juan-Diego22/Portafolio-JuanDiego.git]
 
 ---
 
@@ -471,13 +458,8 @@ Este proyecto fue posible gracias a:
 - [Django for Beginners](https://djangoforbeginners.com/)
 - [REST APIs with Django](https://www.django-rest-framework.org/)
 
----
 
-## 📊 Estado del Proyecto
 
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
-![Maintenance](https://img.shields.io/badge/Maintained-Yes-green?style=for-the-badge)
-![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)
 
 
 
