@@ -26,7 +26,7 @@
 
 ---
 
-## ✨ Características Principales
+##  Características Principales
 
 - 🔐 **Sistema de autenticación completo**
   - Registro de usuarios con validación
@@ -356,29 +356,9 @@ DEBUG = False
 ALLOWED_HOSTS = ['tudominio.com', 'www.tudominio.com']
 ```
 
----
 
-## 🔮 Roadmap - Mejoras Futuras
 
-- [ ] **Sistema de recomendaciones** - Algoritmo basado en preferencias del usuario
-- [ ] **Comentarios y reseñas** - Permitir que usuarios dejen opiniones
-- [ ] **Calificaciones con estrellas** - Sistema de puntuación por película
-- [ ] **Perfiles múltiples** - Varios perfiles por cuenta (como Netflix real)
-- [ ] **Reproductor de video integrado** - Streaming de contenido real
-- [ ] **Sistema de suscripciones** - Planes premium y gratuitos
-- [ ] **Notificaciones push** - Alertas de nuevo contenido
-- [ ] **Modo oscuro/claro** - Toggle de temas visuales
-- [ ] **Subtítulos multiidioma** - Soporte para diferentes idiomas
-- [ ] **Historial de visualización** - Tracking de contenido visto
-- [ ] **Continue watching** - Reanudar desde donde se quedó
-- [ ] **Dockerización** - Containerización para fácil deployment
-- [ ] **Tests automatizados** - Unit tests y integration tests
-- [ ] **CI/CD Pipeline** - Integración y despliegue continuo
-- [ ] **Deploy en AWS/Heroku** - Puesta en producción
-
----
-
-## 🐛 Solución de Problemas Comunes
+##  Solución de Problemas Comunes
 
 ### Error de conexión a MySQL
 ```
@@ -429,9 +409,9 @@ Las contribuciones son bienvenidas y apreciadas. Si deseas mejorar este proyecto
 **Juan Diego**
 
 - 🐙 GitHub: [@Juan-Diego22](https://github.com/Juan-Diego22)
-- 💼 LinkedIn: [https://www.linkedin.com/in/juan-diego-lopez-carvajal-5079462bb/]
+- 💼 LinkedIn: https://www.linkedin.com/in/juan-diego-lopez-carvajal-5079462bb/
 - 📧 Email: lopezc222@hotmail.com
-- 🌐 Portfolio: [https://github.com/Juan-Diego22/Portafolio-JuanDiego.git]
+- 🌐 Portfolio: https://github.com/Juan-Diego22/Portafolio-JuanDiego.git
 
 ---
 
