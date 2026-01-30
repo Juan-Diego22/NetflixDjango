@@ -308,7 +308,7 @@ NetflixDjango/
 *Vista detallada con información completa, trailer y opciones*
 
 #### Creación de Lista Personalizada
-![Crear Lista](screenshorts/CreacionLista.png)
+![Crear Lista](screenshots/CreacionLista.png)
 *Interfaz para crear una nueva lista personalizada "Mi Lista"*
 
 #### Añadir Película a Lista
